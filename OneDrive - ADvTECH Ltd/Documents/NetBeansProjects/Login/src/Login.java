@@ -67,7 +67,14 @@ public class Login {
             if (checkUserName(username)) {
                 break;
             } else {
-                JOptionPane.showMessageDialog(null, "Username is not correctly formatted.");
+                JOptionPane.showMessageDialog(null, "\"Username is not\n" +
+"correctly formatted,\n" +
+"please ensure that\n" +
+"your username\n" +
+"contains an\n" +
+"underscore and is no\n" +
+"more than five\n" +
+"characters in length.\"");
             }
         }
         return username;
@@ -80,7 +87,14 @@ public class Login {
             if (checkPasswordComplexity(password)) {
                 break;
             } else {
-                JOptionPane.showMessageDialog(null, "Password is not correctly formatted.");
+                JOptionPane.showMessageDialog(null, "\"Password is not\n" +
+"correctly formatted;\n" +
+"please ensure that\n" +
+"the password\n" +
+"contains at least eight\n" +
+"characters, a capital\n" +
+"letter, a number, and\n" +
+"a special character.\"");
             }
         }
         return password;
@@ -98,10 +112,18 @@ public class Login {
     }
 
     public boolean loginUser() {
-        String enteredUsername = JOptionPane.showInputDialog("Enter your username: ");
-        String enteredPassword = JOptionPane.showInputDialog("Enter your password: ");
-        return enteredUsername.equals(username) && enteredPassword.equals(password);
+    String enteredUsername = JOptionPane.showInputDialog("Enter your username: ");
+    String enteredPassword = JOptionPane.showInputDialog("Enter your password: ");
+
+    if (enteredUsername.equals(username) && enteredPassword.equals(password)) {
+        // Personalized message after successful login
+        JOptionPane.showMessageDialog(null, "Welcome " + firstName + ", " + lastName + ", it is great to see you again.");
+        return true;
+    } else {
+        return false;
     }
+}
+
 
     private void mainMenu() {
         boolean exitApp = false;
